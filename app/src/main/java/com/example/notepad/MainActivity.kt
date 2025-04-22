@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -14,15 +16,26 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val navController = rememberNavController()
 
             NotePadTheme {
+                val navController = rememberNavController()
+                val listaDeNotas = remember { mutableStateListOf<Nota>() }
+
                 NavHost(
                     navController = navController,
                     startDestination = "lista"
                 ) {
-                    composable("lista") { ListaDeNotasView(navController) }
-                    composable("nueva") { NuevaNota(navController) }
+                    composable("lista") {
+                        ListaDeNotasView(
+                            navController,
+                            listaDeNotas
+                        )
+                    }
+                    composable("nueva") {
+                        NuevaNota(navController) { nota ->
+                            listaDeNotas.add(nota)
+                        }
+                    }
                 }
             }
         }

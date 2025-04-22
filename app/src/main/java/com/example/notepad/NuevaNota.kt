@@ -31,7 +31,11 @@ import com.example.notepad.ui.theme.NotePadTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NuevaNota(navController: NavController, modifier: Modifier = Modifier) {
+fun NuevaNota(
+    navController: NavController,
+    modifier: Modifier = Modifier,
+    onNuevaNota: (Nota) -> Unit
+) {
     Scaffold(
         modifier = modifier,
         topBar = {
@@ -89,6 +93,12 @@ fun NuevaNota(navController: NavController, modifier: Modifier = Modifier) {
             Button(
                 onClick = {
                     navController.popBackStack()
+                    onNuevaNota(
+                        Nota(
+                            titulo = titulo,
+                            descripcion = descripcion
+                        )
+                    )
                 },
                 modifier = Modifier.align(Alignment.End)
             ) {
@@ -104,6 +114,6 @@ fun NuevaNotaPreview() {
     NotePadTheme {
         NuevaNota(
             rememberNavController()
-        )
+        ){ _ -> }
     }
 }
