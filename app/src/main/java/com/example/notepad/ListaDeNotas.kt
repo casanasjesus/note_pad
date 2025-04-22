@@ -1,5 +1,6 @@
 package com.example.notepad
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -68,6 +69,11 @@ fun ListaDeNotasView(
                 ElevatedCard(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .clickable(
+                            onClick = {
+                                navController.navigate("detalle/${nota.titulo}/${nota.descripcion}")
+                            }
+                        )
                 ) {
                     Column(
                       verticalArrangement = Arrangement.spacedBy(10.dp)
