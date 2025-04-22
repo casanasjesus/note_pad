@@ -93,12 +93,8 @@ fun NuevaNota(
             Button(
                 onClick = {
                     navController.popBackStack()
-                    onNuevaNota(
-                        Nota(
-                            titulo = titulo,
-                            descripcion = descripcion
-                        )
-                    )
+                    val nota = Nota(titulo = titulo, descripcion = descripcion)
+                    onNuevaNota(nota)
                 },
                 modifier = Modifier.align(Alignment.End)
             ) {
