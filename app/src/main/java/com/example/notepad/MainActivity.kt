@@ -9,6 +9,7 @@ import androidx.compose.runtime.remember
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.notepad.detalle.DetallePage
 import com.example.notepad.ui.theme.NotePadTheme
 
 class MainActivity : ComponentActivity() {
@@ -16,7 +17,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-
             NotePadTheme {
                 val navController = rememberNavController()
                 val listaDeNotas = remember { mutableStateListOf<Nota>() }
@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
                         val titulo = backStack.arguments?.getString("titulo")
                         val descripcion = backStack.arguments?.getString("descripcion")
 
-                        DetalleDeNotaView(navController, titulo ?: "", descripcion ?: "")
+                        DetallePage(navController, titulo ?: "", descripcion ?: "")
                     }
                 }
             }
