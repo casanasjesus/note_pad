@@ -13,7 +13,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.Lifecycle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LifecycleEventEffect
-import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.notepad.Nota
 
@@ -71,6 +70,5 @@ fun resultadoView(nota: Nota) {
 @Composable
 @Preview
 fun DetallePreview() {
-    val navController = rememberNavController()
 }
 

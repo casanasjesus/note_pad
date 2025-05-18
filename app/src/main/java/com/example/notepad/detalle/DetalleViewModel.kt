@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class DetalleViewModel(
     val nota: Nota,
-    val navController: NavController
+    val navController: NavController? = null
 ): ViewModel() {
     var estado by mutableStateOf<DetalleEstado>(DetalleEstado.Vacio)
 
@@ -24,7 +24,7 @@ class DetalleViewModel(
     }
 
     private fun irParaAtras() {
-        navController.popBackStack()
+        navController?.popBackStack()
     }
 
     private fun cargarContenido() {
