@@ -44,7 +44,7 @@ fun ListaView(
         topBar = {
             TopAppBar(
                 title = {
-                    Text("NotePadApp")
+                    Text("Note Pad App")
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer
